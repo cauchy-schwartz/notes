@@ -1,0 +1,207 @@
+\documentclass[]{article}
+\usepackage{preamble}
+\usepackage[british]{babel}
+\usepackage{amsthm}
+\usepackage{bm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{postulate}{Postulate}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+%opening
+\title{Notes for Analytical Mechanics}
+
+\begin{document}
+
+\maketitle
+
+\section{Mathematics}
+\begin{theorem}[Chain rule] If $F(q_1, \cdots, q_n)$ is a function of $n$ variables, then
+	\begin{equation*}
+		dF = \sum_i \dpt{F}{q_i} dq_i.
+	\end{equation*} 
+In particular, if $F(q_1, \cdots, q_n, t)$ is a function of coordinates and time, then
+\begin{equation*}
+	\dot F = \frac{dF}{dt} =  \sum_i \dpt{F}{q_i} \dot q_i + \dpt{F}{t}.
+\end{equation*}
+\end{theorem}
+
+\begin{definition}[Levi-Cevita symbol]
+	The Levi-Civita symbol $\epsilon_{i_1 \cdots i_n}$ is the sign of the permutation $({i_1 \cdots i_n})$.
+	It has the following properties:
+	\begin{enumerate}
+		\item It is always $1$, $-1$ or $0$.
+		\item Swapping any two indexes inverts the Levi-Civita symbol.
+		\item $\epsilon_{i_1 \cdots i_n} = 0$ if $i_\alpha = i_\beta$ for any $\alpha \neq \beta$.
+		\item A cyclic permutation does not change the Levi-Civita symbol.
+	\end{enumerate}
+\end{definition}
+
+\section{Newtonian mechanics}
+\begin{theorem}
+	The work done by a force equals the change in kinetic energy:
+	\begin{equation*}
+		W_12 = \int_1^2 \mathbf{F} d\mathbf{s} = T_2 - T_1
+	\end{equation*}
+\end{theorem}
+
+\begin{definition}[Conservative force]
+	A \emph{conservative force} is the gradient of a scalar potential:
+	\begin{equation*}
+		\mathbf{F} = -\nabla V(\mathbf{r})
+	\end{equation*}
+\end{definition}
+
+\begin{theorem}
+	A conservative force conserves energy:
+	\begin{equation*}
+		T_2 - T_1 = W_{12} = V_1 - V_2
+	\end{equation*}
+\end{theorem}
+
+\begin{definition}[Lagrange multipliers]
+	content
+\end{definition}
+
+\section{Constraints, coordinates and displacements}
+\begin{definition}[Holonomic constraint]
+	Consider a system of $n$ particles with (actual, physical) coordinates $\mathbf{r_1}, \cdots \mathbf{r_n}$ and the time $t$. A \emph{holonomic} constraint on the system can be expressed as a set of equations
+	\begin{equation*}
+		f(\mathbf{r_1}, \cdots \mathbf{r_n}, t) = 0.
+	\end{equation*}
+\end{definition}
+
+\begin{remark}
+	We generally limit ourselves to holonomic constraints, and at a microscopic scale, these are generally the only ones involved.
+\end{remark}
+
+\begin{definition}[Rheonomous and scleronomous constraints]
+	A constraint is called \emph{rheonomous} if it contains the time as an explicit variable. If it does \emph{not}, it is called \emph{scleronomous}.
+\end{definition}
+
+\begin{definition}[Virtual displacement]
+	content
+\end{definition}
+
+\begin{postulate}[d'Alembert's principle]
+	In the physical systems that we are interested in, reaction forces do no work under a virtual displacement.
+\end{postulate}
+
+\begin{definition}[Generalized force]
+	\begin{equation*}
+		Q_\sigma = \sum_{i=1}^{3N} F_i^{(a)} \dpt{x_i}{q_\sigma}
+	\end{equation*}
+\end{definition}
+
+\section{Lagrangian mechanics}
+
+\begin{definition}[Lagrangian]
+	The Lagrangian is the kinetic energy $T$ minus the potential energy $V$:
+\begin{equation*}
+	L = T - V
+\end{equation*}
+\end{definition}
+
+\begin{theorem}
+	[Euler-Lagrange equation, without constraints]
+	\begin{equation*}
+		\dpt{L}{q} = \frac{d}{dt}\qty(\dpt{L}{\dot q})
+	\end{equation*}
+\end{theorem}
+
+\begin{definition}[Action]
+	The \emph{action} $S$ of a system evolving from $t_1$ to $t_2$ is the integral of the Lagrangian:
+\end{definition}
+
+\begin{equation*}
+	S = \int_{t_1}^{t_2} L(t) \ dt
+\end{equation*}
+
+\begin{definition}[Variation]
+	Variation:
+	\begin{equation*}
+		\delta S = 
+	\end{equation*}
+	\todo{what is this really?}
+\end{definition}
+
+\begin{postulate}[Hamilton's principle]
+	A system will evolve in such a way that the action has a stationary value at the actual path of motion:
+\begin{equation*}
+	\delta S = 0
+\end{equation*}
+\end{postulate}
+
+\section{Hamiltonian mechanics}
+\begin{definition}
+	[Canonical momentum from the Lagrangian]
+\begin{equation*}
+	p_i = \dpt{L}{\dot q_i}
+\end{equation*}
+\end{definition}
+\begin{definition}[Hamiltonian]
+	The Hamiltonian ($i$ running over all variables) is calculated from a Lagrangian $L(\qty{q_i, \dot q_i}, t)$ and the canonical coordinates $\qty{q_i}$ and momenta $\qty{p_i}$ as
+\begin{equation*}
+	H = \sum_i p_i \dot q_i - L
+\end{equation*}
+\end{definition}
+\begin{theorem}[Hamiltonian equations of motion]
+	Let $H(\qty{q_i, p_i}, t)$ be a Hamiltonian (derived from a Lagrangian $L$, or from another Hamiltonian by a canonical transformation). Then, for all $i$,
+\begin{gather*}
+	\dot q_i = \dpt{H}{p_i},\\
+	\dot p_i = -\dpt{H}{q_i}.
+\end{gather*}
+Furthermore, if $H$ is derived from a Lagrangian $L$, then
+\begin{equation*}
+	\frac{dH}{dt} = \dpt{H}{t} = -\dpt{L}{t}.
+\end{equation*}
+
+\end{theorem}
+\begin{definition}[Canonical transformation]
+	A transformation $({p_i, q_i}) \ra (P_i, Q_i)$ is \emph{canonical} if it preserves the form of the Hamiltonian equations of motion, i.e.
+\begin{align*}
+	\dot Q &= \dpt{H}{P} \\
+	\dot P &= -\dpt{H}{Q}
+\end{align*}
+\end{definition}
+\begin{definition}[Poisson bracket]
+	The Poisson bracket of two functions $f$ and $g$, with respect to coordinates $\qty{q_i,p_i}$, is defined as
+\begin{equation*}
+	\{f,g\}_\qty{q_i,p_i} = \sum_i \qty(\dpt{f}{q_i} \dpt{g}{p_i} - \dpt{f}{p_i} \dpt{g}{q_i})
+\end{equation*}
+\end{definition}
+\begin{theorem}
+	A transformation is canonical iff it preserves Poisson brackets:
+	\begin{equation*}
+		\qty{f,g}_\qty{q_i,p_i} = \qty{f,g}_\qty{Q_i,P_i} \quad \text{for all functions $f, g$}
+	\end{equation*}
+\end{theorem} 
+
+\begin{theorem}[Hamilton-Jacobi equation]
+	Let $H$ be a Hamiltonian function and $S$ a generating function such that $H + \dpt{S}{t} = 0$. Then
+	\begin{equation*}
+		H\qty(q_1, \cdots, q_n, \dpt{S}{q_1}, \cdots, \dpt{S}{q_1}, t) + \dpt{S}{t} = 0
+	\end{equation*}
+	\todo{Not much of a theorem, really just by construction. But useful.}
+\end{theorem}
+
+\section{Central force problem}
+\begin{theorem}[Virial theorem]
+	\begin{equation*}
+		\bar T = -\frac{1}{2} \overline{\sum_i\vec F_i \cdot \vec r_i}
+	\end{equation*}
+\end{theorem}
+
+\section{Rotating coordinate systems}
+\begin{theorem}[Effective force]
+	If a particle is applied a force of $\mathbf{F}$ in a reference system, an observer in a coordinate system rotating with angular velocity $\bm \omega$ will see it as affected by a force
+\begin{equation*}
+	\mathbf{F}_\text{eff} = \mathbf{F} - 2m(\bm{\omega} \times \mathbf{v_r}) - m \bm{\omega} \times(\bm{\omega} \times \mathbf{r})
+\end{equation*}
+where $\mathbf{v_r}$ is the velocity of the particle in the rotating coordinate system.
+\end{theorem}
+
+\end{document}

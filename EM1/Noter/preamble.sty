@@ -1,0 +1,109 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{preamble}
+
+%Til \maketitle
+\author{cauchy-schwartz}
+\date{\today}
+
+%Sprog- og tekstpakker
+\usepackage[T1]{fontenc}
+\usepackage[useregional]{datetime2}
+\usepackage{setspace}
+
+%Grafikpakker
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+%\usepackage[outdir=./images/]{epstopdf}
+%\usepackage{caption} - er i memoir
+%\usepackage{subfigure} - er i memoir
+\usepackage[section]{placeins}
+\usepackage{mdframed}
+
+%Til links
+\usepackage{url}
+%\usepackage{hyperref} - giver problemer sammen med ku-frontpage
+
+% Andet
+%\usepackage[l2tabu]{nag} % Advarsler om dårlig LaTeX-praksis
+\usepackage[obeyFinal]{todonotes}
+
+%Matematikpakker
+\usepackage{mathtools}
+\usepackage{amsthm,amsfonts,amssymb}
+\usepackage{physics}
+
+
+% Semantiske eller forkortede navne til visse symboler
+\newcommand{\union}{\cup}
+\newcommand{\isc}{\cap}
+\newcommand{\imp}{\implies}
+\newcommand{\limp}{\Longleftarrow}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\dpt}[3][]{\frac{\partial^{#1} #2}{\partial #3 ^{#1}}}
+\newcommand{\dtt}[3][]{\frac{d^{#1} #2}{d #3 ^{#1}}}
+%\newcommand{\set}[1]{\left \lbrace #1 \right \rbrace}
+\newcommand{\cqq}{\coloneqq}
+\newcommand{\sq}{\subseteq}
+\newcommand{\subs}{\subseteq}
+\newcommand{\sups}{\supseteq}
+\newcommand{\deff}{\overset{\mathrm{def}}{\iff}}
+\newcommand{\nemp}{\neq \emp}
+
+% Parentesagtige ting
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\set{\lbrace}{\rbrace}
+%\DeclarePairedDelimiter\pars{}{]}
+%\DeclarePairedDelimiter\bracks{[}{]}
+
+% Mængder
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Primes}{\mathbb{P}}
+\newcommand{\emp}{\emptyset}
+\newcommand{\wo}{\setminus}
+\newcommand{\wos}[1]{\setminus\qty{#1}}
+
+% Div. matematikkommandoer
+\newcommand{\bmat}[1]{\ensuremath{\begin{bmatrix}#1\end{bmatrix}}}
+\newcommand{\parmat}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\gmf}[3]{\ra #1 \mathrm{\ for \ } #2 \ra #3}
+%\newcommand{\angle}[1]{\langle #1 \rangle}
+\newcommand{\nsub}{\trianglelefteq}
+\newcommand{\snsub}{\triangleleft}
+\newcommand{\ot}[1]{\overset{\text{#1}}}
+
+
+% Typografiske tweaks til matematik
+% Laver kvantorer til operatorer for bedre mellemrum
+\DeclareMathOperator{\Exists}{\exists}
+\DeclareMathOperator{\Forall}{\forall}	
+
+% Til pæne (matematiske) referencer internt i dokumentet
+\usepackage{prettyref}
+\newcommand{\pr}{\prettyref}
+
+\newrefformat{eq}{\textup{(\ref{#1})}}
+\newrefformat{def}{Definition \ref{#1}}
+\newrefformat{thm}{Sætning \ref{#1}}
+\newrefformat{lem}{Lemma \ref{#1}}
+\newrefformat{cor}{Korollar \ref{#1}}
+\newrefformat{ax}{Aksiom \ref{#1}}
+\newrefformat{ex}{Eksempel \ref{#1}}
+\newrefformat{met}{Metode \ref{#1}}
+\newrefformat{cl}{Påstand \ref{#1}}
+\newrefformat{prop}{Proposition \ref{#1}}
+
+
+\newrefformat{cha}{Kapitel \ref{#1}}
+\newrefformat{sec}{Afsnit \ref{#1}}
+\newrefformat{part}{\ref{#1}}
+
+\newrefformat{tab}{Tabel \ref{#1} på side \pageref{#1}}
+\newrefformat{fig}{Figure \ref{#1} on page \pageref{#1}}

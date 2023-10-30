@@ -1,0 +1,255 @@
+\documentclass[]{article}
+\usepackage{preamble}
+\usepackage[danish]{babel}
+\usepackage{amsthm}
+\usepackage{bm}
+\newcommand{\fr}{\mathfrak{r}}
+\newcommand{\vfr}{\vec{\mathfrak{r}}}
+\newcommand{\hfr}{\hat{\mathfrak{r}}}
+
+\newtheorem{theorem}{Sætning}
+\newtheorem{postulate}{Postulat}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Bemærkning}
+\newtheorem{experimental}{Eksperimentalt faktum}
+\newcommand{\Qenc}{Q_\text{enc}}
+\newcommand{\Ienc}{I_\text{enc}}
+
+\usepackage{siunitx}
+
+%opening
+\title{Noter til EM1}
+
+\begin{document}
+
+\maketitle
+
+\section{Elektrostatik}
+
+\begin{definition}[Elektrisk felt]
+	Det elektriske felt $ \mathbf{E}(\mathbf{r})$ i et punkt $\mathbf{r}$ er den kraft pr. ladning, som en punktladning $q$ anbragt i $\mathbf{r} $ vil opleve.
+\end{definition}
+
+\begin{experimental}[Coulombs lov]
+	Betragt to punktladninger $q_1$ og $q_2$, og antag, at $q_1$ er stationær. Da vil $q_1$ påvirke $q_2$ med en elektrisk kraft
+	\begin{equation*}
+		\mathbf{F}_E = k_e \dfrac{q_1 q_2}{\fr^2} \hfr
+	\end{equation*}
+	hvor $\vfr$ er vektoren fra $q_1$ til $q_2$, og $k_e = \dfrac{1}{4\pi \epsilon_0}$ er Coulombs konstant.
+	
+	Man kan ækvivalent sige, at $q_1$ producerer et elektrisk felt
+	\begin{equation*}
+		\mathbf{E} = k_e \dfrac{q_1}{\fr^2} \hfr
+	\end{equation*}
+	i ethvert punkt $\mathbf{r}$ i rummet.
+\end{experimental}
+
+\begin{experimental}[Superpositionsprincippet]
+	Den elektriske kraft mellem to ladninger er upåvirket af alle andre ladninger i universet.
+\end{experimental}
+
+
+\begin{theorem}[Gauss' lov på integralform]
+	Lad $\mathcal{S}$ være en flade, som ikke indeholder punkt- eller overflade-ladninger på selve fladen. Så er
+	\begin{equation*}
+		\oint \mathbf{E} \cdot d \mathbf{a} = \frac{\Qenc}{\epsilon_0}, 
+	\end{equation*}
+	hvor $\mathbf{a}$ er den udadpegende normalvektor i hvert punkt på $S$, og $\Qenc$ er den totale ladning omsluttet af $\mathcal{S}$.
+\end{theorem}
+
+\begin{theorem}[Gauss' lov på differentialform]
+	I et punkt, som ikke indeholder punkt- eller overflade-ladninger, er
+	\begin{equation*}
+		\nabla \cdot \mathbf{E} = \dfrac{\rho}{\epsilon_0.}
+	\end{equation*}
+	hvor $\rho$ er ladningstætheden i punktet.
+\end{theorem}
+
+\begin{theorem}
+	Det elektriske felt frembragt af en statisk ladningsfordeling er rotationsfrit:
+	\begin{equation*}
+		\nabla \times \mathbf{E} = \mathbf{0} \quad \text{for statiske ladningsfordelinger.}
+	\end{equation*}
+\end{theorem}
+
+\begin{definition}[Elektrostatisk potentiale]
+	Potentialet for et punkt i en statisk ladningsfordeling, relativt til et referencepunkt $\mathcal{O}$, er
+	\begin{equation*}
+		V(\mathbf{r}) = -\int_\mathcal{O}^{\mathbf{r}} \mathbf{E} \cdot d \mathbf{l}
+	\end{equation*}
+	Det elektriske felt er altså \emph{minus} gradienten af potentialet:
+	\begin{equation*}
+		\mathbf{E} = -\nabla V
+	\end{equation*}
+\end{definition}
+
+\begin{theorem}
+	Det arbejde $W$, der kræves for at flytte en partikel over en potentialeforskel $V$, er givet ved
+	\begin{equation*}
+		W = qV.
+	\end{equation*}
+	Denne energi kan også anses som den elektrostatiske potentielle energi, som ladningen har 'vundet' ved at bevæge sig over potentialeforskellen.
+\end{theorem}
+
+\begin{definition}[Perfekt leder]
+	En (perfekt) leder er et materiale med en ubegrænset mængde ladninger, der kan bevæge sig frit rundt i materialet.
+\end{definition}
+
+\begin{theorem}[Egenskaber ved ledere]
+	En leder har følgende egenskaber:
+	\begin{enumerate}
+		\item  $\mathbf{E} = \mathbf{0}$ i det ledende materiale.
+		\item  Ladningstætheden $\rho = 0$ inde i det ledende materiale.
+		\item Enhver fri ladning i lederen befinder sig på overfladen.
+		\item Ethvert punkt i et ledende materiale har samme eletriske potentiale.
+		\item $\mathbf{E}$-feltet udenfor en leder er vinkelret på lederens overflade.
+	\end{enumerate} 
+\end{theorem}
+
+\begin{theorem}
+	Et punkt, der befinder sig i et hulrum inde for en leder, er elektrisk isoleret fra omgivelserne udenfor lederen.
+\end{theorem}
+
+\section{Magnetostatik}
+\begin{experimental}[Magnetisk kraft]
+	En ladning $q$, der bevæger sig med hastighed $v$ gennem et konstant magnetfelt $\mathbf{B}$, vil opleve en magnetisk kraft
+	\begin{equation*}
+		\mathbf{F}_\text{mag} = q(\mathbf{v} \times \mathbf{B}).
+	\end{equation*}
+\end{experimental}
+\begin{theorem}
+	Magnetiske felter kan ikke udføre arbejde (da $\mathbf{F} \perp \mathbf{B}$)
+\end{theorem}
+
+\begin{experimental}[Biot-Savarts lov]
+	Magnetfeltet i et punkt $\mathbf{r}$ i rummet produceret af en jævn linjestrøm $\mathbf{I}(\textbf{r'})$ er givet ved
+	\begin{equation*}
+		\mathbf{B}(\mathbf{r}) = \frac{\mu_0}{4 \pi} \int{\frac{\mathbf{I} \times \hfr}{\fr^2}} \ dl.
+	\end{equation*}
+	hvor $dl$ løber over hele den kurve, strømmen løber langs.
+\end{experimental}
+
+\begin{experimental}
+	Der er hidtil ikke fundet magnetiske monopoler. Matematisk set er altså, så vidt vi har set,
+	\begin{equation*}
+		\nabla \times \mathbf{B} = \mathbf{0}.
+	\end{equation*}
+\end{experimental}
+
+\begin{theorem}[Amperes lov på integralform]
+	Lad $\gamma$ være en lukket kurve uden linje- eller overfladestrøm på selve kurven. Så er
+	\begin{equation*}
+		\oint_\gamma \mathbf{B} \cdot d \mathbf{l} = \mu_0 \Ienc, 
+	\end{equation*}
+	hvor $\Ienc$ er den totale ladning omsluttet af en flade, der har $\gamma$ som rand.
+\end{theorem}
+
+\begin{theorem}[Amperes lov på differentialform]
+	I et punkt, som ikke gennemløbes af linje- eller overfladestrømme, er
+	\begin{equation*}
+		\nabla \times \mathbf{B} = \mu_0 \mathbf{J}.
+	\end{equation*}
+	hvor $J$ er volumenstrømmen i punktet.
+\end{theorem}
+
+\section{Elektrodynamik}
+\begin{definition}[Elektromotans]
+	\emph{Elektromotansen} (ofte, misvisende, kaldet for den \emph{elektromotoriske kraft}) er integralet af de kræfter, der skubber ladninger rundt i en strømløkke:
+	\begin{equation*}
+		\mathcal{E} := \oint \mathbf{f} \cdot d\mathbf{l}.
+	\end{equation*}
+\end{definition}
+\begin{theorem}
+	I næsten alle situationer er
+\begin{equation*} 
+	\mathcal{E} = -\dfrac{d \Phi_B}{dt}
+\end{equation*}
+\end{theorem}
+
+\section{Konstanter}
+Vakuumpermittivitet:
+\begin{equation*}
+	\epsilon_0 = \SI{8.854187813e-12}{\dfrac{C^2}{N \cdot m^2}}
+\end{equation*}
+Coulomb-konstant:
+\begin{equation*}
+	k_e = \frac{1}{4\pi \epsilon_0} = \SI{8.98755179e9}{\dfrac{N \cdot m^2}{C^2}}
+\end{equation*}
+Vakuumpermeabilitet:
+\begin{equation*}
+	\mu_0 = 4\pi \cdot \SI{e-7}{\frac{N}{A^2}} = \SI{1.256637062e-6}{\frac{N}{A^2}}
+\end{equation*}
+Lysets fart:
+\begin{equation*}
+	c = \SI{2.99 792 458e9}{\frac{m}{s}}
+\end{equation*}
+Der gælder:
+\begin{equation*}
+	\epsilon_0 \mu_0 = \dfrac{1}{c^2}
+\end{equation*}
+Elementarladning:
+\begin{equation*}
+	e = \SI{1.602176634e-19}{C}
+\end{equation*}
+Elektronens masse:
+\begin{equation*}
+	m_e = \SI{9.109383701e-31}{kg}
+\end{equation*}
+Protonens masse:
+\begin{equation*}
+	m_p = \SI{1.6726219237e-27}{kg}
+\end{equation*}
+
+
+\section{Enheder}
+Elektrisk ladning $q$:
+\begin{equation*}
+	[q] = \unit{C} = \unit{A \cdot s}
+\end{equation*}
+Elektrisk strøm $I$:
+\begin{equation*}
+	[I] = \unit{A} = \unit{\frac{C}{s}}
+\end{equation*}
+Overfladestrøm $K$:
+\begin{equation*}
+	[K] = \unit{\frac{A}{m}}
+\end{equation*}
+Volumenstrøm $J$:
+\begin{equation*}
+	[J] = \unit{\frac{A}{m^2}}
+\end{equation*}
+Elektrisk potentiale $V$:
+\begin{equation*}
+	[V] = \unit{V} = \unit{\frac{J}{C}} = \unit{\frac{N \cdot m}{C}}
+\end{equation*}
+Elektrisk felt $E$:
+\begin{equation*}
+	[E] = \unit{\frac{N}{C}} = \unit{\frac{V}{m}} = \unit{\frac{m\cdot kg}{s^3 \cdot A}}
+\end{equation*}
+Elektrisk forskydning $D$ og polarisering $P$:
+\begin{equation*}
+	[D] = [P] [\epsilon_0 E] \unit{\frac{C}{m^2}} = \unit{\frac{A \cdot s}{m^2}}
+\end{equation*}
+Magnetfelt $B$:
+\begin{equation*}
+	[B] = \unit{T} = \unit{\frac{N}{A \cdot m} =  \unit{\frac{N \cdot s}{C \cdot m}} = \unit{\frac{kg}{A \cdot s^2}}}
+\end{equation*}
+$H$-felt og magnetisering $M$:
+\begin{equation*}
+	[H] = [M] = \qty[\frac{B}{\mu_0}] = \unit{\frac{A}{m}}
+\end{equation*}
+Magnetisk flux $ \Phi_B$:
+\begin{equation*}
+	[\Phi_B] = \unit{Wb} = \unit{V \cdot s}
+\end{equation*}
+Modstand (resistans) $R$:
+\begin{equation*}
+	[R] = \unit{\Omega} = \unit{\frac{V}{A}} = \unit{\dfrac{J \cdot s}{C^2}}
+\end{equation*}
+Resistivitet $\rho$:
+\begin{equation*}
+	[\rho] = \unit{\Omega \cdot m}
+\end{equation*}
+\end{document}

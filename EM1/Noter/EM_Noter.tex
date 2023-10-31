@@ -6,6 +6,10 @@
 \newcommand{\fr}{\mathfrak{r}}
 \newcommand{\vfr}{\vec{\mathfrak{r}}}
 \newcommand{\hfr}{\hat{\mathfrak{r}}}
+\newcommand{\vr}{\hat{r}}
+\newcommand{\hr}{\hat{\mathbf{r}}}
+\newcommand{\hth}{\hat{\bm{\theta}}}
+\newcommand{\hphi}{\hat{\bm{\phi}}}
 
 \newtheorem{theorem}{Sætning}
 \newtheorem{postulate}{Postulat}
@@ -154,19 +158,76 @@
 	hvor $J$ er volumenstrømmen i punktet.
 \end{theorem}
 
+\begin{definition}[Magnetisk dipolmoment]
+	Det magnetiske dipolmoment af en løkke, der bærer en strøm $I$, er defineret som
+	\begin{equation*}
+		\mathbf{m} = I \int_\mathcal{S}{d\mathbf{a}}
+	\end{equation*}
+	for enhver flade $\mathcal{S}$, der har strømløkken som rand. Hvis $\mathcal{S}$ er flad (dvs. ligger i en plan), er $\abs{\int_\mathcal{S}{d\mathbf{a}}} = A(\mathcal{S})$, mens retningen kommer fra højrehåndsreglen.
+\end{definition}
+
+\begin{theorem}
+	En magnetisk dipol i origo med dipolmoment $\mathbf{m}$, pegende i $z$-retningen, skaber et vektorpotentiale
+	\begin{equation*}
+		\mathbf{A}_\text{dip}(\mathbf{r}) = \frac{\mu_0}{4\pi} \frac{\mathbf{m} \times \hat {\mathbf{r}}}{r^2}
+	\end{equation*}
+	og et magnetisk felt
+	\begin{align*}
+		\mathbf{B}_\text{dip}(\mathbf{r}) &= \frac{\mu_0m}{4\pi r^3}(2 \cos \theta \hr + \sin \theta \hth)\\
+		&= \frac{\mu_0}{4\pi r^3}(3(\mathbf{m}\times \hr) - \mathbf{m}).
+	\end{align*}
+\end{theorem}
+
 \section{Elektrodynamik}
+
 \begin{definition}[Elektromotans]
 	\emph{Elektromotansen} (ofte, misvisende, kaldet for den \emph{elektromotoriske kraft}) er integralet af de kræfter, der skubber ladninger rundt i en strømløkke:
 	\begin{equation*}
-		\mathcal{E} := \oint \mathbf{f} \cdot d\mathbf{l}.
+		\mathcal{E} := \oint \mathbf{f} \cdot d\mathbf{l} = \oint \mathbf{f_s} \cdot d\mathbf{l}.
 	\end{equation*}
+	da $\mathbf{f} = \mathbf{f}_s + \mathbf{E}$. For en jævn strøm giver $\mathbf{E}$ en elektrostatisk (dvs. rotationsfri) kraft, så  $\oint \mathbf{E} \cdot d\mathbf{l} = 0$.
 \end{definition}
+
+\begin{remark}
+	$\mathcal{E}$ kan oftest også betragtes som arbejde pr. ladning i kredsløbet, og i en ideel elektromotorisk kilde er $\mathcal{E} = V$.
+\end{remark}
+
 \begin{theorem}
 	I næsten alle situationer er
 \begin{equation*} 
 	\mathcal{E} = -\dfrac{d \Phi_B}{dt}
 \end{equation*}
 \end{theorem}
+
+\begin{theorem}[Lenz' lov]
+	Den inducerede strøm løber i den retning, der mindsker ændringen i magnetisk flux.
+\end{theorem}
+
+\begin{definition}[Gensidig induktans]
+	Den gensidige induktans $M$ mellem to løkker er en proportionalitetskonstant for den flux, der induceres i den ene, hvis der løber en strøm gennem den anden:
+	\begin{equation*}
+		\phi_1 = MI_2.
+	\end{equation*}
+	(Neumann-formlen, udledt vha. Stokes og vektorpotentialet, viser, at den gensidige induktans er symmetrisk: $ \dfrac{\Phi_1}{I_2} = \dfrac{\Phi_2}{I_1}$)
+	Vi får også:
+	\begin{theorem}
+		I samme situation er
+		\begin{equation*}
+			\mathcal{E}_2 = -\frac{d \Phi_2}{dt} = - M \dot I
+		\end{equation*}
+	\end{theorem}
+\end{definition}
+
+\begin{definition}[Selvinduktans]
+	\emph{(Selv)induktansen} $L$ af en løkke er den flux, den inducerer i sig selv ved en strømændring:
+	\begin{equation*}
+		\phi 
+	\end{equation*}
+\end{definition}
+
+%\begin{environment-name}
+%	content
+%\end{environment-name}
 
 \section{Konstanter}
 Vakuumpermittivitet:
@@ -242,7 +303,11 @@ $H$-felt og magnetisering $M$:
 \end{equation*}
 Magnetisk flux $ \Phi_B$:
 \begin{equation*}
-	[\Phi_B] = \unit{Wb} = \unit{V \cdot s}
+	[\Phi_B] = \unit{Wb} = \unit{T \cdot m^2} = \unit{V \cdot s}
+\end{equation*}
+Magnetisk dipolmoment $m$:
+\begin{equation*}
+	[m] = [Ia] = \unit{A \cdot m^2}
 \end{equation*}
 Modstand (resistans) $R$:
 \begin{equation*}
@@ -251,5 +316,9 @@ Modstand (resistans) $R$:
 Resistivitet $\rho$:
 \begin{equation*}
 	[\rho] = \unit{\Omega \cdot m}
+\end{equation*}
+Induktans $L$:
+\begin{equation*}
+	[L] = [H] = \unit{\frac{V\cdot s}{A}} = \unit{\frac{J}{A^2}}
 \end{equation*}
 \end{document}

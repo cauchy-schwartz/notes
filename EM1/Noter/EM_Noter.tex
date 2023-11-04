@@ -10,6 +10,8 @@
 \newcommand{\hr}{\hat{\mathbf{r}}}
 \newcommand{\hth}{\hat{\bm{\theta}}}
 \newcommand{\hphi}{\hat{\bm{\phi}}}
+\newcommand{\hn}{\hat {\mathbf{n}}}
+
 
 \newtheorem{theorem}{Sætning}
 \newtheorem{postulate}{Postulat}
@@ -24,11 +26,13 @@
 \usepackage{siunitx}
 
 %opening
-\title{Noter til EM1}
+\title{Noter til EM1 (Griffiths)}
 
 \begin{document}
 
 \maketitle
+
+\section{Vektoranalyse}
 
 \section{Elektrostatik}
 
@@ -89,6 +93,14 @@
 	\end{equation*}
 \end{definition}
 
+\begin{theorem}[Poissons ligning]
+	Det elektrostatiske potentiale opfylder 
+	\begin{equation*}
+		\nabla^2 V = -\frac{\rho}{\epsilon_0}.
+	\end{equation*}
+	For $\rho = 0$ fås $	\nabla^2 V  = 0$ (Laplaces ligning).
+\end{theorem}
+
 \begin{theorem}
 	Det arbejde $W$, der kræves for at flytte en partikel over en potentialeforskel $V$, er givet ved
 	\begin{equation*}
@@ -116,6 +128,58 @@
 	Et punkt, der befinder sig i et hulrum inde for en leder, er elektrisk isoleret fra omgivelserne udenfor lederen.
 \end{theorem}
 
+\section{Potentialer}
+
+\begin{theorem}[Første entydighedssætning]
+	En løsning til Laplaces ligning, $\nabla^2 V = 0$, i et volumen er entydigt bestemt af værdierne af $V$ på randen af dette volumen.
+	
+	Dette retfærdiggør billedmetoden, hvor et elektrostatisk problem (finde et potentiale) kan løses ved at løse et helt andet fysisk problem!
+\end{theorem}
+
+\begin{theorem}[Ideel elektrisk dipol]
+	En ideel elektrisk dipol i origo med dipolmoment $\mathbf{p}$, pegende i $z$-retningen, skaber et potentiale
+	\begin{equation*}
+		V_\text{dip}(\mathbf{r}) = \frac{1}{4\pi \epsilon_0} \frac{\mathbf{p} \cdot \hat {\mathbf{r}}}{r^2}
+	\end{equation*}
+	og et elektrisk felt
+	\begin{align*}
+		\mathbf{E}_\text{dip}(r, \theta) &= \frac{p}{4\pi \epsilon_0  r^3}(2 \cos \theta \hr + \sin \theta \hth)\\
+		&= \frac{1}{4\pi \epsilon_0  r^3}(3(\mathbf{p}\times \hr) - \mathbf{p}).
+	\end{align*}
+\end{theorem}
+
+\section{Elektriske felter i materie}
+
+\begin{theorem}[Bundne ladninger]
+	En polarisation $\mathbf{P}$ skaber en bunden overfladeladning
+	\begin{equation*}
+		\sigma_b = \mathbf{P} \cdot \hat {\mathbf{n}} 
+	\end{equation*}
+	og en bunden volumenladning
+	\begin{equation*}
+		\rho_b = - \nabla \cdot \mathbf{P}.
+	\end{equation*}
+\end{theorem}
+
+\begin{definition}[Elektrisk forskydning]
+	Den elektriske forskydning $\mathbf{D}$ defineres ved
+	%	Felterne $\mathbf{E}$, $\mathbf{D}$ og $\mathbf{P}$ er relateret ved
+	\begin{equation*}
+		\mathbf{D} = \epsilon_0 \mathbf{E}+\mathbf{P}.
+	\end{equation*}
+\end{definition}
+
+\begin{theorem}[Gauss' lov for $\mathbf{D}$]
+	Gauss' lov gælder for $D$, men kun med de frie ladninger:
+	\begin{equation*}
+		\nabla \cdot \mathbf{D} = \rho_f
+	\end{equation*}
+	eller på integralform:
+	\begin{equation*}
+		\oint \mathbf{D} \cdot d\mathbf{a} = Q_{f, enc}
+	\end{equation*}
+\end{theorem}
+
 \section{Magnetostatik}
 \begin{experimental}[Magnetisk kraft]
 	En ladning $q$, der bevæger sig med hastighed $v$ gennem et konstant magnetfelt $\mathbf{B}$, vil opleve en magnetisk kraft
@@ -125,6 +189,36 @@
 \end{experimental}
 \begin{theorem}
 	Magnetiske felter kan ikke udføre arbejde (da $\mathbf{F} \perp \mathbf{B}$)
+\end{theorem}
+
+\begin{theorem}[Magnetisk kraft på linje]
+	Den magnetiske kraft på et stykke strømførende ledning er
+	\begin{equation*}
+		\mathbf{F}_\text{mag} = \int(\mathbf{I} \times \mathbf{B}) \ dl = \int I (d\mathbf{l} \times \mathbf{B}).
+	\end{equation*}
+\end{theorem}
+
+\begin{definition}[Overfladestrøm]
+	Når en strøm bevæger sig over en overflade, beskrives det ved en overfladestrøm
+	\begin{equation*}
+		\mathbf{K} = \dfrac{d\mathbf{I}}{d_{l_\perp}}
+	\end{equation*}
+	hvor $d_{l_\perp}$ er den infitisemale bredde af et bånd tangentielt til strømmens retning.
+\end{definition}
+
+\begin{definition}[Volumenstrøm]
+	Når en strøm bevæger sig gennem en volumen, beskrives det ved en volumenstrøm
+	\begin{equation*}
+		\mathbf{J} = \dfrac{d\mathbf{I}}{d_{a_\perp}}
+	\end{equation*}
+	hvor $d_{a_\perp}$ er det infitisemale tværsnitsareal af et rør tangentielt på strømmen.
+\end{definition}
+
+\begin{theorem}[Kontinuitetssætningen]
+	Ladning er lokalt bevaret. Matematisk set hænger volumenstrøm og ladningstæthed derfor sammen ved
+	\begin{equation*}
+		\nabla \cdot \mathbf{J} = -\dpt{\rho}{t}.
+	\end{equation*}
 \end{theorem}
 
 \begin{experimental}[Biot-Savarts lov]
@@ -142,20 +236,45 @@
 	\end{equation*}
 \end{experimental}
 
-\begin{theorem}[Amperes lov på integralform]
-	Lad $\gamma$ være en lukket kurve uden linje- eller overfladestrøm på selve kurven. Så er
+\begin{theorem}[Ampères lov på integralform]
+	Lad $\gamma$ være en lukket kurve uden linje- eller overfladestrøm på selve kurven og kun jævn volumenstrøm. Så er
 	\begin{equation*}
 		\oint_\gamma \mathbf{B} \cdot d \mathbf{l} = \mu_0 \Ienc, 
 	\end{equation*}
 	hvor $\Ienc$ er den totale ladning omsluttet af en flade, der har $\gamma$ som rand.
 \end{theorem}
 
-\begin{theorem}[Amperes lov på differentialform]
-	I et punkt, som ikke gennemløbes af linje- eller overfladestrømme, er
+\begin{theorem}[Ampères lov på differentialform]
+	I et punkt, som ikke gennemløbes af linje- eller overfladestrømme, og hvor volumenstrømmen er jævn, er 
 	\begin{equation*}
 		\nabla \times \mathbf{B} = \mu_0 \mathbf{J}.
 	\end{equation*}
-	hvor $J$ er volumenstrømmen i punktet.
+	hvor $\mathbf{J}$ er volumenstrømmen i punktet.
+\end{theorem}
+
+\begin{definition}[Magnetisk vektorpotentiale]
+	Da $\mathbf{B}$-feltet er divergensfrit, kan det udtrykkes som rotationen af en vektor $\mathbf{A}$:
+	\begin{equation*}
+		B = \nabla \times \mathbf{A}
+	\end{equation*}
+	Man vælger altid at lægge en konstant til $\mathbf{A}$, således at
+	\begin{equation*}
+		\nabla \cdot \mathbf{A} = 0.
+	\end{equation*}
+\end{definition}
+
+\begin{theorem}[Ampéres lov for vektorpotentialet]
+	Ampères lov kan udtrykkes som en Poisson-sammenhæng mellem vektorpotentialet og volumenstrømmen:
+	\begin{equation*}
+		\nabla^2 \mathbf{A} = - \mu_0 \mathbf{J}
+	\end{equation*}
+	Der er tre ligninger her, en for hver \textbf{kartesiske} komponent af $\mathbf{A}$ og $\mathbf{J}$!
+	
+	Hvis $ \mathbf{J} \rightarrow 0 $ i det uendelige, er løsningen 
+	
+	\begin{equation*}
+		\mathbf{A}(\mathbf{r}) = \frac{\mu_0}{4 \pi } \int \dfrac{\mathbf{J}(\mathbf{r'})}{\fr} d \tau'.
+	\end{equation*}
 \end{theorem}
 
 \begin{definition}[Magnetisk dipolmoment]
@@ -166,8 +285,8 @@
 	for enhver flade $\mathcal{S}$, der har strømløkken som rand. Hvis $\mathcal{S}$ er flad (dvs. ligger i en plan), er $\abs{\int_\mathcal{S}{d\mathbf{a}}} = A(\mathcal{S})$, mens retningen kommer fra højrehåndsreglen.
 \end{definition}
 
-\begin{theorem}
-	En magnetisk dipol i origo med dipolmoment $\mathbf{m}$, pegende i $z$-retningen, skaber et vektorpotentiale
+\begin{theorem}[Ideel magnetisk dipol]
+	En ideel magnetisk dipol i origo med dipolmoment $\mathbf{m}$, pegende i $z$-retningen, skaber et vektorpotentiale
 	\begin{equation*}
 		\mathbf{A}_\text{dip}(\mathbf{r}) = \frac{\mu_0}{4\pi} \frac{\mathbf{m} \times \hat {\mathbf{r}}}{r^2}
 	\end{equation*}
@@ -176,12 +295,56 @@
 		\mathbf{B}_\text{dip}(\mathbf{r}) &= \frac{\mu_0m}{4\pi r^3}(2 \cos \theta \hr + \sin \theta \hth)\\
 		&= \frac{\mu_0}{4\pi r^3}(3(\mathbf{m}\times \hr) - \mathbf{m}).
 	\end{align*}
+	Dette er præcis de samme ligninger som som en elektrisk dipol -- eneste ændringer er $\frac{1}{\epsilon_0} \ra \mu_0$, $p \ra \mathbf{m} $ og $p \cdot \hr \rightarrow \mathbf{m}\times \hr $!
+\end{theorem}
+
+\section{Magnetiske felter i materie}
+%\begin{theorem}
+%	Felterne $\mathbf{B}$, $\mathbf{H}$ og $\mathbf{M}$ er relateret ved
+%	\begin{equation*}
+%		\mathbf{B} = \mu_0(\mathbf{H}+\mathbf{M})
+%	\end{equation*}
+%\end{theorem}
+
+\begin{definition}[H-feltet]
+	\begin{equation*}
+		\mathbf{H} = \dfrac{1}{\mu_0} \mathbf{B} + \mathbf{M}
+	\end{equation*}
+\end{definition}
+
+\begin{theorem}[Amperes lov for $H$]
+	Der gælder:
+	\begin{equation*}
+		\nabla \times \mathbf{B} = \mathbf{J}_{f, \text{enc}}
+	\end{equation*}
+	eller på integralform:
+	\begin{equation*}
+		\oint \mathbf{H} \cdot d \mathbf{l} = I_{f, \text{enc}}
+	\end{equation*}
+\end{theorem}
+
+\begin{theorem}[Bundne strømme]
+	En magnetisering $\mathbf{M}$ skaber en bunden overfladestrøm
+	\begin{equation*}
+		\mathbf{K}_b = \mathbf{M} \times \hn
+	\end{equation*}
+	og en bunden volumenladning
+	\begin{equation*}
+		\mathbf{J}_b = \nabla \times \mathbf{M}.
+	\end{equation*}
 \end{theorem}
 
 \section{Elektrodynamik}
 
+\begin{theorem}[Modstand i en ledning]
+	Den totale modstand $R$ i en ledning med længde $\ell$, tværsnitsareal $A$ og resistivitet $\rho$, er givet ved
+	\begin{equation*}
+		R = \frac{L}{A}\rho.
+	\end{equation*}
+\end{theorem}
+
 \begin{definition}[Elektromotans]
-	\emph{Elektromotansen} (ofte, misvisende, kaldet for den \emph{elektromotoriske kraft}) er integralet af de kræfter, der skubber ladninger rundt i en strømløkke:
+	\emph{Elektromotansen} $\mathcal{E}$ (ofte, misvisende, kaldet for den \emph{elektromotoriske kraft}) er integralet af de kræfter, der skubber ladninger rundt i en strømløkke:
 	\begin{equation*}
 		\mathcal{E} := \oint \mathbf{f} \cdot d\mathbf{l} = \oint \mathbf{f_s} \cdot d\mathbf{l}.
 	\end{equation*}
@@ -192,10 +355,10 @@
 	$\mathcal{E}$ kan oftest også betragtes som arbejde pr. ladning i kredsløbet, og i en ideel elektromotorisk kilde er $\mathcal{E} = V$.
 \end{remark}
 
-\begin{theorem}
-	I næsten alle situationer er
+\begin{theorem}[Fluxregel for elektromotans]
+	I næsten alle situationer, hvor der induceres en strøm, er
 \begin{equation*} 
-	\mathcal{E} = -\dfrac{d \Phi_B}{dt}
+	\mathcal{E} = \oint{\mathbf{E} \cdot d\mathbf{l}} = -\dfrac{d \Phi_B}{dt}.
 \end{equation*}
 \end{theorem}
 
@@ -204,30 +367,114 @@
 \end{theorem}
 
 \begin{definition}[Gensidig induktans]
-	Den gensidige induktans $M$ mellem to løkker er en proportionalitetskonstant for den flux, der induceres i den ene, hvis der løber en strøm gennem den anden:
+	Den gensidige induktans $M$ mellem to løkker er en proportionalitetskonstant for den magnetiske flux, der induceres i den ene, hvis der løber en strøm gennem den anden:
 	\begin{equation*}
-		\phi_1 = MI_2.
+		\Phi_{B,1} = M \cdot I_2.
 	\end{equation*}
 	(Neumann-formlen, udledt vha. Stokes og vektorpotentialet, viser, at den gensidige induktans er symmetrisk: $ \dfrac{\Phi_1}{I_2} = \dfrac{\Phi_2}{I_1}$)
-	Vi får også:
 	\begin{theorem}
 		I samme situation er
 		\begin{equation*}
-			\mathcal{E}_2 = -\frac{d \Phi_2}{dt} = - M \dot I
+			\mathcal{E}_2 = -\frac{d \Phi_{B,2}}{dt} = - M \frac{d I}{dt}.
 		\end{equation*}
 	\end{theorem}
 \end{definition}
 
-\begin{definition}[Selvinduktans]
-	\emph{(Selv)induktansen} $L$ af en løkke er den flux, den inducerer i sig selv ved en strømændring:
+\begin{theorem}[R/L-kredsløb]
+	I et kredsløb med induktans $L$ og modstand $R$, forbundet til et batteri, der leverer emf $\mathcal{E}_0$, gælder differentialligningen
 	\begin{equation*}
-		\phi 
+		\mathcal{E}_0 - L\frac{d I}{dt} = IR,
+	\end{equation*}
+	med løsningen
+	\begin{equation*}
+		I(t) = \dfrac{\mathcal{E}_0}{R} + k \exp(-\frac{Rt}{L}).
+	\end{equation*}
+\end{theorem}
+
+\begin{definition}[Selvinduktans]
+	\emph{(Selv)induktansen} $L$ af en løkke fortæller om den magnetiske flux, den inducerer i sig selv ved en strømændring:
+	\begin{equation*}
+		\Phi_B = LI
 	\end{equation*}
 \end{definition}
+
+\begin{theorem}[Magnetisk energi]
+	Et kredsløb med en induktans $L$, hvor der løber en strøm $I$, bærer en magnetisk energi
+	\begin{equation*}
+		W = \dfrac{1}{2} LI^2.
+	\end{equation*}
+\end{theorem}
+
+\begin{theorem}[Ampères lov med forskydningsled]
+	Hvis strømmen ændrer sig, skal Ampers lov have et ekstra led:,
+	\begin{equation*}
+		\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \epsilon_0 \dpt{\mathbf{E}}{t}.
+	\end{equation*}
+	Størrelsen $ \epsilon_0 \dpt{\mathbf{E}}{t}$ kaldes traditionelt (og misvisende) \emph{forskydningsstrømmen}.
+\end{theorem}
 
 %\begin{environment-name}
 %	content
 %\end{environment-name}
+
+\newpage
+\section{Enheder}
+Elektrisk ladning $q$:
+\begin{equation*}
+	[q] = \unit{C} = \unit{A \cdot s}
+\end{equation*}
+Elektrisk strøm $I$:
+\begin{equation*}
+	[I] = \unit{A} = \unit{\frac{C}{s}}
+\end{equation*}
+Overfladestrøm $K$:
+\begin{equation*}
+	[K] = \unit{\frac{A}{m}}
+\end{equation*}
+Volumenstrøm $J$:
+\begin{equation*}
+	[J] = \unit{\frac{A}{m^2}}
+\end{equation*}
+Elektrisk potentiale $V$:
+\begin{equation*}
+	[V] = \unit{V} = \unit{\frac{J}{C}} = \unit{\frac{N \cdot m}{C}} = \unit{\frac{N \cdot m}{A \cdot s}}
+\end{equation*}
+Elektrisk felt $E$:
+\begin{equation*}
+	[E] = \unit{\frac{N}{C}} = \unit{\frac{V}{m}} = \unit{\frac{m\cdot kg}{s^3 \cdot A}}
+\end{equation*}
+Elektrisk forskydning $D$ og polarisering $P$:
+\begin{equation*}
+	[D] = [P] = [\epsilon_0 E] = \unit{\frac{C}{m^2}} = \unit{\frac{A \cdot s}{m^2}}
+\end{equation*}
+Magnetfelt $B$:
+\begin{equation*}
+	[B] = \unit{T} = \unit{\frac{N}{A \cdot m} =  \unit{\frac{N \cdot s}{C \cdot m}} = \unit{\frac{kg}{A \cdot s^2}}}
+\end{equation*}
+$H$-felt og magnetisering $M$:
+\begin{equation*}
+	[H] = [M] = \qty[\frac{B}{\mu_0}] = \unit{\frac{A}{m}}
+\end{equation*}
+Magnetisk flux $ \Phi_B$:
+\begin{equation*}
+	[\Phi_B] = \unit{Wb} = \unit{T \cdot m^2} = \unit{V \cdot s}
+\end{equation*}
+Magnetisk dipolmoment $m$:
+\begin{equation*}
+	[m] = [Ia] = \unit{A \cdot m^2}
+\end{equation*}
+Modstand (resistans) $R$:
+\begin{equation*}
+	[R] = \unit{\Omega} = \unit{\frac{V}{A}} = \unit{\dfrac{J \cdot s}{C^2}}
+\end{equation*}
+Resistivitet $\rho$:
+\begin{equation*}
+	[\rho] = \unit{\Omega \cdot m} = \unit{\frac{V \cdot m}{A}}
+\end{equation*}
+Induktans $L$:
+\begin{equation*}
+	[L] = [H] = \unit{\frac{V\cdot s}{A}} = \unit{\frac{J}{A^2}}
+\end{equation*}
 
 \section{Konstanter}
 Vakuumpermittivitet:
@@ -263,62 +510,5 @@ Protonens masse:
 	m_p = \SI{1.6726219237e-27}{kg}
 \end{equation*}
 
-
-\section{Enheder}
-Elektrisk ladning $q$:
-\begin{equation*}
-	[q] = \unit{C} = \unit{A \cdot s}
-\end{equation*}
-Elektrisk strøm $I$:
-\begin{equation*}
-	[I] = \unit{A} = \unit{\frac{C}{s}}
-\end{equation*}
-Overfladestrøm $K$:
-\begin{equation*}
-	[K] = \unit{\frac{A}{m}}
-\end{equation*}
-Volumenstrøm $J$:
-\begin{equation*}
-	[J] = \unit{\frac{A}{m^2}}
-\end{equation*}
-Elektrisk potentiale $V$:
-\begin{equation*}
-	[V] = \unit{V} = \unit{\frac{J}{C}} = \unit{\frac{N \cdot m}{C}}
-\end{equation*}
-Elektrisk felt $E$:
-\begin{equation*}
-	[E] = \unit{\frac{N}{C}} = \unit{\frac{V}{m}} = \unit{\frac{m\cdot kg}{s^3 \cdot A}}
-\end{equation*}
-Elektrisk forskydning $D$ og polarisering $P$:
-\begin{equation*}
-	[D] = [P] [\epsilon_0 E] \unit{\frac{C}{m^2}} = \unit{\frac{A \cdot s}{m^2}}
-\end{equation*}
-Magnetfelt $B$:
-\begin{equation*}
-	[B] = \unit{T} = \unit{\frac{N}{A \cdot m} =  \unit{\frac{N \cdot s}{C \cdot m}} = \unit{\frac{kg}{A \cdot s^2}}}
-\end{equation*}
-$H$-felt og magnetisering $M$:
-\begin{equation*}
-	[H] = [M] = \qty[\frac{B}{\mu_0}] = \unit{\frac{A}{m}}
-\end{equation*}
-Magnetisk flux $ \Phi_B$:
-\begin{equation*}
-	[\Phi_B] = \unit{Wb} = \unit{T \cdot m^2} = \unit{V \cdot s}
-\end{equation*}
-Magnetisk dipolmoment $m$:
-\begin{equation*}
-	[m] = [Ia] = \unit{A \cdot m^2}
-\end{equation*}
-Modstand (resistans) $R$:
-\begin{equation*}
-	[R] = \unit{\Omega} = \unit{\frac{V}{A}} = \unit{\dfrac{J \cdot s}{C^2}}
-\end{equation*}
-Resistivitet $\rho$:
-\begin{equation*}
-	[\rho] = \unit{\Omega \cdot m}
-\end{equation*}
-Induktans $L$:
-\begin{equation*}
-	[L] = [H] = \unit{\frac{V\cdot s}{A}} = \unit{\frac{J}{A^2}}
-\end{equation*}
+%\newpage
 \end{document}
